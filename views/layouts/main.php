@@ -7,6 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
+use app\components\AdsWidget;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -18,6 +19,7 @@ AppAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Teko" rel="stylesheet">
     <?php $this->head() ?>
 </head>
@@ -40,6 +42,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => 'Home', 'url' => ['/']],
             ['label' => 'CreateMonsterDetail', 'url' => ['/mdtail/index'],'visible' => !Yii::$app->user->isGuest,],
+            ['label' => 'Monsters' , 'url' => ['/monster/index']],
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
@@ -62,8 +65,18 @@ AppAsset::register($this);
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
+
+        <?php 
+
+            if(Yii::$app->user->isGuest){ 
+                echo AdsWidget::widget(['options' => ['id' => 'adsSection','style'=>'']]);
+            }else if(!Yii::$app->user->isGuest){
+                echo AdsWidget::widget(['options' => ['id' => 'adsSection','style'=>'display:none']]);
+            }
+        ?>
         <?= $content ?>
     </div>
+
 </div>
 
 <footer class="footer">

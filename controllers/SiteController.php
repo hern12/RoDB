@@ -8,6 +8,8 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\UploadForm;
+use yii\web\UploadedFile;
 
 class SiteController extends Controller
 {
@@ -123,4 +125,13 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+
+
+    public function actionCreatewidget()
+    {
+        return $this->render('adswidget');
+    }
+
+    
+
 }

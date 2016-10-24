@@ -21,11 +21,15 @@ class AppAsset extends AssetBundle
         'css/site.css',
         'css/owl.carousel.css',
         'css/owl.theme.default.min.css',
-        'css/custom.css'
+        'css/custom.css',
+        'css/styles.css',
+        'css/image.css'
     ];
     public $js = [
         'js/owl.carousel.min.js',
-        'js/useSlider.js'
+        'js/useSlider.js',
+        'js/jquery.quick.pagination.min.js',
+        'js/jquery.scrollUp.min.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

@@ -7,8 +7,10 @@ class m160927_164619_RoDB extends Migration
     public function up()
     {
 
+
         $this->createTable('monsters',[
             'monster_id' => 'pk',
+            'imagePath' => 'string',
             'monster_name' => 'string NOT NULL',
             'monster_hp' => 'int',
             'monster_race' => 'string',
